@@ -1,0 +1,115 @@
+
+@import '../css/variables.scss';
+
+
+
+/// Handle first and last cell spacing
+@mixin handleFirstLast (){
+    &:first-child {
+        padding: 0 0 0 24px;
+    }
+
+    &:last-child {
+        padding: 0 14px 0 8px;
+    }
+}
+
+/// When Overflow text show dots
+@mixin overflowText (){
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.r-table {
+    direction: ltr;
+    text-align: left;
+    padding: 0;
+
+  
+    table {
+        table-layout: fixed;
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 12px;
+
+        tr {
+            td {
+                height: 48px;
+                padding: 0 0 0 56px;
+                font-size: 13px;
+                color: rgba(0, 0, 0, 0.87);
+                border-bottom: solid 1px #DDDDDD;
+                @include handleFirstLast ();
+                @include overflowText ();
+                &.edit {
+                    overflow: unset;
+
+                }
+
+            }
+    
+        }
+  
+        th {
+            cursor: pointer;
+            height: 56px;
+            padding: 0 0 0 56px;
+            font-weight: 500;
+            color: #757575;
+            vertical-align: middle;
+            outline: none !important;
+            @include handleFirstLast ();
+            @include overflowText ();
+        }
+    
+    
+    }
+
+
+      
+}
+  
+
+@media screen and (max-width : 768px) {
+    .r-table {
+
+        table {
+
+            thead {
+                display: none;   
+                   
+            }
+
+            tr {
+                border: 1px solid #ddd;
+                border-bottom-width: 3px;
+                display: block;
+                margin-bottom: 16px;
+                padding:0 16px;
+                
+                td {
+                    padding:16px 0 8px 0 !important;
+                    position: relative;
+                    border-bottom: 1px solid #ddd;
+                    display: block;
+                    
+                    &::before {
+                        content: attr(data-title);
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        color: rgb(172, 168, 168);
+                        font-size: 13px;
+                    }
+    
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+                }
+            }
+     
+            
+            
+        }
+
+    }
+}

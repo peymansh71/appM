@@ -1,0 +1,414 @@
+@import "../css/variables.scss";
+
+
+
+/// Create input style
+/// @access public
+@mixin input () {
+    font-family: inherit;
+    font-size: $text-size;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    color: $text-color;
+    background: white no-repeat;
+    background-image: linear-gradient(to bottom, var(--focus-color),var(--focus-color)), linear-gradient(to bottom, silver, silver);
+    background-size: 0 1px, 100% 1px;
+    background-position: 50% 100%, 50% 100%;
+    transition: background-size 0.4s cubic-bezier(0.64, 0.09, 0.08, 1);
+}
+
+/// Create bordered input style
+/// @access public
+/// @param {Number} $extraHeight [28px] - Input Height
+
+@mixin borderedInput ($extraHeight) {
+  background-image: none;
+  padding-top: .3rem;
+  border: 1px solid $label-color;
+  border-radius: 4px;
+  padding-right: 16px;
+  padding-left: 16px;
+  height:$input-height + $extraHeight;
+
+}
+
+/// Fix input in browser autofill state
+/// @access public
+@mixin fixAutofill () {
+    //Fix autofill
+    input:-webkit-autofill {
+        box-shadow: 0 0 0 30px white inset !important;
+
+        &:hover, &:focus, &:active {
+        box-shadow: 0 0 0 30px white inset !important;
+        }
+    }
+
+    &:not(.r-bordered) input:-webkit-autofill {
+        border-bottom: 1px solid $label-color !important;
+
+        &:hover, &:focus, &:active {
+        border-bottom: 1px solid $label-color !important;
+        }
+    }
+}
+/**********************************************
+* INPUT
+***********************************************/
+.r-input {
+    @include fixAutofill();
+    direction: ltr;
+    text-align: left;
+    position: relative;
+    margin-top: $space-around;
+    margin-bottom: $space-around;
+
+    &.r-noselect > input {
+      user-select: none;
+      color: transparent;
+      text-shadow: 0 0 0 $text-color;
+      cursor: pointer;
+  
+      &:focus {
+        outline: none;
+      }
+    }
+  
+    input {
+        @include input();
+        height : $input-height;
+    }
+
+    textarea {
+      @include input();
+      resize: none !important;
+      padding-top: ($input-height/2 - 8px);
+      padding-bottom: ($input-height/2 - 8px);
+    }
+
+     > {
+      label {
+        position: absolute;
+        left: 0;
+        top: calc(50% - 8px);
+        height: 16px;
+        line-height: 18px;;
+        font-size: $text-size;
+        color: $text-color;
+        pointer-events: none;
+        cursor: text;
+        background: transparent;
+        transition: 300ms ease all;
+      }
+     }
+
+    /****************************
+     * Filled & Focus  
+    *****************************/
+    &.filled > label {
+      top: -18px;
+      color: $label-color;
+      font-size: $label-size;
+    }
+    
+    input:focus, textarea:focus {
+      background-size: 100% 2px, 100% 2px;
+    }
+
+    input:focus ~ label, textarea:focus ~ label {
+      top: -18px;
+      color: $label-color;
+      font-size: $label-size;
+    }
+
+    /****************************
+     * Icons 
+    *****************************/
+    //Action icons (like error success)
+    .r-icon {
+      position: absolute;
+      top: calc(50% - 12px);
+      right: -6px;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+
+      svg {
+        width: 20px !important;
+        height: 20px !important;
+        padding-top: 2px;
+        padding-left: 2px;
+      }
+    }
+
+    //Icon with text (when has ".r-has-icon" class)
+    &.r-has-icon > {
+      .r-input-icon {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        line-height: 28px;
+        font-size: 25px;
+        overflow: hidden;
+        top: calc(50% - 12px);
+        left: 0;
+  
+        span {
+          position: relative;
+          top: -3px;
+        }
+
+        svg {
+          width: 24px;
+          color: $text-color !important;
+          fill: $text-color ;
+        }
+      }
+  
+      input, textarea {
+        padding-left: unset;
+        padding-left: 32px;
+      }
+  
+      label {
+        left: 32px;
+      }
+    }
+  
+    /****************************
+     * Messages 
+    *****************************/
+    .r-message {
+      font-size: $label-size;
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 100%;
+    }
+
+    /* Error */
+    &.r-error {
+      .r-message {
+        color: $danger-color;
+      }
+
+      .r-icon svg {
+        fill: $danger-color !important;
+      }
+
+      input:focus ~ .r-line, textarea:focus ~ .r-line {
+        background: $danger-color;
+      }
+
+      input, textarea {
+        border-color: $danger-color;
+      }
+      input:focus ~ label, textarea:focus ~ label {
+        color: $danger-color;
+      }
+
+      &.filled > label {
+        color: $danger-color;
+      }
+    }
+
+    /* Success */
+    &.r-success {
+      .r-icon svg {
+        fill: $success-color !important;
+      }
+    }
+  
+   
+    /****************************
+    * Disabled Input 
+    *****************************/
+    &.r-disabled > {
+      input, textarea {
+        background-image: none;
+        border-bottom: 1px dashed $disabled-color !important;
+        color: $label-color;
+        cursor: not-allowed;
+      }
+    }
+  
+    &.r-disabled.r-has-icon > .r-input-icon,
+    &.r-disabled > .r-icon {
+      opacity: 0.3;
+    }
+
+
+  /****************************
+  * Bordered Input 
+  *****************************/
+  &.r-bordered {
+    input {
+      @include borderedInput(16)
+    }
+    textarea {
+      @include borderedInput(27)
+    }
+
+    label {
+      left: 16px;
+    }
+
+    //Filled & Focus
+    input:focus ~ label, textarea:focus ~ label {
+      top: -8px;
+      color: $label-color;
+      font-size: $label-size;
+      background: #fff;
+
+    }
+
+    input:focus, textarea:focus {
+      border:2px solid $focus-color;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+
+    &.filled > label {
+      top: -8px;
+      color: $label-color;
+      font-size: $label-size;
+      background: #fff;
+    }
+
+    /*icons */
+    .r-icon {
+      right: 12px;
+    }
+
+    &.r-has-icon > {
+      .r-input-icon {
+        left: 8px;
+      }
+
+      input, textarea {
+        padding-left: unset;
+        padding-left: 40px;
+      }
+
+      label {
+        left: 40px;
+      }
+    }
+    
+    /* Error & Success */
+    &.r-error {
+      input:focus ~ label, textarea:focus ~ label {
+        color: $danger-color;
+      }
+
+      &.filled > label {
+          color: $danger-color;
+      }
+    }
+    /* Disbaled */
+    &.r-disabled > input {
+      border: 1px dashed $disabled-color !important;
+    }
+  
+  }
+  
+
+}
+  
+
+  /**********************************************
+  * RTL INPUT
+  ***********************************************/
+  .r-input.r-rtl {
+    input, textarea {
+      text-align: right;
+      direction: rtl;
+    }
+    label {
+      left: unset;
+      right: 0;
+    }
+    
+    /* Message */
+    &.r-error > .r-message, &.r-success > .r-message {
+      text-align: right;
+      direction: rtl;
+    }
+
+    /* Icons */ 
+    .r-icon {
+      right: unset;
+      left: -6px;
+    }
+
+    &.r-has-icon > {
+      .r-input-icon {
+        left: unset;
+        right: 0;
+      }
+  
+      input, textarea {
+        padding-left: unset;
+        padding-right: 32px;
+      }
+  
+      label {
+        left: unset;
+        right: 32px;
+      }
+    }
+
+    /* Bordered */
+    &.r-bordered {
+      .r-icon {
+        right: unset;
+        left: 12px;
+      }
+
+      input, textarea {
+        padding-left: unset;
+        padding-right: 16px;
+      }
+
+      label {
+        left: unset;
+        right: 16px;
+      }
+  
+      &.r-has-icon > {
+        .r-input-icon {
+          left: unset;
+          right: 8px;
+        }
+  
+        input, textarea {
+          padding-right: unset;
+          padding-right: 40px;
+        }
+  
+        label {
+          left: unset;
+          right: 40px;
+        }
+      }
+    }
+  
+    &.r-bordered {
+      &.r-error > {
+        input, textarea {
+          padding-left: 40px;
+        }
+      }
+  
+      &.r-success > {
+        input, textarea {
+          padding-left: 40px;
+        }
+      }
+    }
+  }
+  

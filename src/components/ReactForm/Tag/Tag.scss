@@ -1,0 +1,84 @@
+@import '../css/variables.scss';
+@import '../css/Options.scss';
+
+/************************
+* TAG
+*************************/
+.r-tag {
+  direction: ltr;
+  text-align: left;
+  width: 100%;
+  position: relative;
+
+  > input:focus ~ label, &.filled > label {
+    top: unset !important;
+    bottom: calc(100% + 2px) !important;
+  }
+
+  > label {
+    top: unset;
+    bottom: calc(50% - calc(var(--input-height) * .8rem) + 4px);
+  }
+  
+  /* Bordered */
+  &.r-bordered {
+    border: 1px solid $label-color;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-bottom: 0;
+
+    input {
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      border-radius: 0;
+    }
+
+    input:focus {
+      border: 0;
+      border-bottom: 1px solid $label-color
+    }
+
+    .r-line {
+      display: block;
+    }
+    &.r-error {
+      border-color: var(--danger-color)
+    }
+    &.r-disabled {
+      border: 1px dashed $disabled-color!important;
+    }
+  }
+  
+  //Disabled
+  &.r-disabled {
+    &.r-bordered input {
+      border-left: 0 !important;
+      border-top: 0 !important;
+      border-right: 0 !important;
+    }
+    input {
+      color: $label-color;
+    }
+
+    .r-tag-icon {
+      opacity: .3;
+    }
+  }
+
+
+}
+
+
+ 
+/************************
+* RTL TAG
+*************************/
+.r-tag.r-rtl {
+  direction: rtl;
+  text-align: right;
+}
+  
+
+  
+  

@@ -1,0 +1,68 @@
+@import '../css/variables.scss';
+@import '../css/Options.scss';
+
+/************************
+* SELECT
+************************/
+.r-multiselect {
+    cursor: pointer;
+    direction: ltr;
+    text-align: left;
+    width: 100%;
+
+    > input {
+      padding-right: 28px;
+    }
+
+
+    /* Bordered */
+    &.r-bordered > input {
+      padding-right: 40px;
+    }
+
+    /* Multi Select Checkbox*/
+    .r-checkbox.r-nospace .r-checkbox-fake {
+      margin-top: 3px;
+      padding-right: 12px;
+    }
+
+    /* Animated arrow */
+    .r-icon {
+      transition: .2s ease-in-out all;
+    }
+  
+    &.active > .r-icon {
+      transition: .4s ease all;
+      transition: .4s ease-in-out all;
+      transform: rotate(180deg);
+    }
+}
+  
+/************************
+* RTL SELECT
+************************/
+.r-multiselect.r-rtl {
+  direction: rtl;
+  text-align: right;
+  > input{
+    padding-right: unset;
+    padding-left: 28px;
+  }
+
+  /* bordered */
+  &.r-bordered > input {
+    padding-left: 40px;
+  }
+
+
+  /* Multi Select Checkbox*/
+  .r-checkbox.r-nospace .r-checkbox-fake {
+    padding: 0;
+    margin-left: 12px !important;
+  }
+
+
+}
+
+
+

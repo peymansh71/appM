@@ -1,0 +1,88 @@
+
+/*********************
+* Sidebar
+**********************/
+.sidebar {
+	background: #0095DA;
+	width: 270px;
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+	z-index:9
+}
+
+.sidebar img {
+	width: 100px;
+	margin: 40px 0;
+}
+
+.sidebar-parents {
+	width: 100%;
+	margin:0;
+	padding: 0;
+
+	
+}
+
+.sidebar-parents > li {
+	position: relative
+}
+.sidebar-parents > li > a > i {
+	position: absolute;
+	left: 16px;
+	top: 10px;
+	font-size: 22px
+	
+}
+.sidebar-parents > li > a {
+	display: block;
+	color: #fff;
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	padding: 8px 24px
+}
+.sidebar-parents > li:hover > a,
+.sidebar-parents > li.active > a {
+	background: #0475A9
+}
+.sidebar-parents > li > a >span {
+	font-size: 20px;
+	padding-left: 16px
+}
+
+.sidebar-parents > li >  ul {
+	position: absolute;
+	background: #14203C;
+	right:95%;
+	top: 0;
+	display: block;
+	padding:0;
+	min-width: 230px;
+	opacity: 0;
+	visibility: hidden;
+	transition: all .2s ease;
+	height: 200px;
+	overflow-y: auto
+}
+.sidebar-parents > li:hover >  ul {
+	opacity: 1;
+	visibility: visible;;
+		right:100%;
+
+}
+.sidebar-parents > li >  ul > li > a {
+  white-space: nowrap;
+	color: #fff;padding: 8px 24px;
+	display: block
+}
+
+.sidebar-parents > li >  ul > li:hover >a {
+  background: #0475A9;
+  visibility: visible;
+}

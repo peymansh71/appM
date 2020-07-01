@@ -1,0 +1,17 @@
+@media screen and (max-width:800px) {
+    .login {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .login-logo, .login-form {
+        position: unset;
+        top: unset;
+        right: unset;
+
+    }
+    .login-logo {
+       width: 100%;
+       padding: 24px;
+    }
+}

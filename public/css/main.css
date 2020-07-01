@@ -1,0 +1,180 @@
+
+@font-face {
+	font-family: Iransnas_Light;
+	font-style: normal;
+	font-weight: 300;
+	src: url('../fonts/iransans/eot/IRANSansWeb(FaNum)_Light.eot');
+	src: url('../fonts/iransans/eot/IRANSansWeb(FaNum)_Light.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+		 url('../fonts/iransans/woff2/IRANSansWeb(FaNum)_Light.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../fonts/iransans/woff/IRANSansWeb(FaNum)_Light.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+		 url('../fonts/iransans/ttf/IRANSansWeb(FaNum)_Light.ttf') format('truetype');
+}
+
+body {
+	direction: rtl;
+	padding: 0;
+    margin: 0;
+    font-family: 'Iransnas_Light';
+	background: #F9FAFB
+}
+a {
+	text-decoration: none
+}
+ul {
+	list-style: none
+}
+
+/*********************
+* Content
+**********************/
+.content {
+	position: absolute;
+	top: 70px;
+	width: calc(100% - 90px);
+	background: #fff;
+	border:1px solid #ddd;
+	border-radius: 3px;
+	margin: 20px;
+	padding: 24px
+}
+
+/*********************
+* Login
+**********************/
+.login {
+  	display: flex
+}
+.login-logo {
+	background: #273049;
+	color:#fff;
+	width: 400px;
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+
+	
+  
+}
+
+.login-logo::after {
+  content: "";
+	 background: url(../images/mining.jpg) no-repeat center center fixed; 
+
+  background-size: cover;
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+.login-logo img {
+	width: 150px;
+}
+.login-logo h1 {
+	font-size: 18px;
+	margin-top: 30px
+
+}
+
+.login-form {
+	color: #000;
+	position: fixed;
+	height: 100%;
+	right: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: calc(100% - 400px);
+	
+	
+}
+
+
+.login-form-elements {
+	width: 300px;
+
+}
+
+
+
+/*********
+* Button 
+**********/
+button {
+	background: none;
+	border: 0;
+	outline: 0;
+	font-family: inherit;
+	cursor: pointer;
+}
+.r-button {
+	cursor: pointer;
+	margin:12px 5px;
+	display: block;
+	background: #0095DA;
+	color: #fff;
+	padding:6px 16px;
+	border-radius: 3px;
+	position: relative;
+	overflow: hidden;
+
+}
+.r-button.default {
+	background: #fff;
+	border: 1px solid #eee;
+	color: #000;
+}
+/* Effect */
+.ripple:before  {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: currentColor;
+    visibility: hidden;
+    z-index: 2;
+}
+.ripple:not(:active):before {
+    animation: ripple 2s cubic-bezier(0, 0, 0.2, 1);
+    transition: visibility 2s step-end;
+}
+.ripple:active:before {
+    visibility: visible;
+}
+
+@keyframes ripple {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0.5;
+    }
+    100% {
+        width: 250px;
+        height: 250px;
+        opacity: 0;
+    }
+}
+@keyframes ripple-xs {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0.5;
+    }
+    100% {
+        width: 50px;
+        height: 50px;
+        opacity: 0;
+    }
+}

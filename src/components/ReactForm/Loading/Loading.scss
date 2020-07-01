@@ -1,0 +1,30 @@
+
+/* Animation Dots */
+.r-dots-loading {
+	position: relative;
+	text-align: center;
+	z-index: 5;
+	display: flex;
+	align-items: center;
+
+	.dot {
+		margin: 0 3px;
+		height: 5px;
+		width: 5px;
+		border-radius: 50%;
+		background:rgb(134, 134, 134);
+		opacity: 0;
+		animation: showHideDot 1.5s ease-in-out infinite;
+  
+		&.one { animation-delay: 0.2s; }
+		&.two { animation-delay: 0.4s; }
+		&.three { animation-delay: 0.6s; }
+	}
+}
+  
+@keyframes showHideDot {
+0% { opacity: 0; }
+50% { opacity: 1; }
+60% { opacity: 1; }
+100% { opacity: 0; }
+}

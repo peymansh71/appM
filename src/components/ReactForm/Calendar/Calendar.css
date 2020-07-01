@@ -1,0 +1,249 @@
+/******************
+ * DatePicker
+ ******************/
+.r-datepicker {
+  cursor: pointer;
+  
+}
+.r-datepicker .r-icon{
+  z-index: 9;
+  
+}
+/* Header */
+.r-datepicker-header {
+  display: flex;
+  justify-content:space-around;
+  margin-bottom:6px;
+  align-items:center;
+  direction: ltr;
+  border: 1px solid #D3D3D3;
+  border-radius: 30px;
+  width: 260px;
+  height: 45px;
+
+}
+.r-datepicker-header button {
+  background:#fff;
+  border:1px solid #D3D3D3;
+  width:30px;
+  height:30px;
+  padding:0 !important;
+  line-height:40px;
+  border-radius:50%;
+  outline:0;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 11;
+}
+
+
+.r-datepicker-header button svg {
+  width:20px !important;
+  cursor: pointer; 
+}
+.r-datepicker-selected {
+  display: flex;
+  -webkit-user-select: none;
+  user-select: none;
+  justify-content: center;
+  width: 120px;
+
+}
+.r-datepicker-selected  .r-selected-item{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:80px;
+  font-size: 12px;
+}
+.r-datepicker-selected  .r-selected-item span {
+  display: flex
+}
+/* Content */
+.r-datepicker-content {
+  border:1px solid #D3D3D3;
+  border-radius:15px;
+  padding: 4px;
+  position: fixed;
+  z-index: 12;
+  background: #fff;
+}
+/* .r-datepicker-content  .r-calendar,
+.r-datepicker-content  .r-rangeCalendar {
+  border: 0;
+} */
+
+/******************
+* Range Calendar 
+******************/
+.r-rangeCalendar {
+  display: flex;
+  border-radius:15px;
+  max-width: 600px;
+}
+.r-rangeCalendar .r-calendar {
+  border: 0;
+}
+.r-rangeCalendar.r-rtl {
+  direction: rtl ;
+}
+.r-rangeCalendar.r-bordered {
+  border:1px solid #D3D3D3;
+}
+/***************
+* Calendar 
+***************/
+.r-calendar {
+  width: 300px;
+  border:1px solid #D3D3D3;
+  border-radius:15px;
+  padding: 8px;
+  -webkit-user-select: none;
+  user-select: none; 
+  background: #fff;
+  z-index: 2;
+}
+.r-calendar-wrapper {
+  background:#FCFCFC;
+  padding:16px;
+  border-radius:15px;
+}
+
+
+/* Header */
+.r-calendar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom:16px;
+  align-items:center;
+  direction: ltr
+
+}
+.r-calendar-header button {
+  background:#fff;
+  border:1px solid #D3D3D3;
+  width:30px;
+  height:30px;
+  padding:0 !important;
+  line-height:40px;
+  border-radius:50%;
+  outline:0;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+
+.r-calendar-header button svg {
+  width:20px !important;
+  cursor: pointer; 
+}
+.r-calendar-header button:disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+.r-calendar-header .r-title {
+  font-size: 14px;
+  cursor: pointer;
+  font-weight:bold;
+}
+
+
+/* Content */
+.r-calendar-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+.r-calendar-item{
+  color: var(--text-color);
+  width: 14.28571428571429%;
+  cursor: pointer;
+  height: 32px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 13px;
+  vertical-align: middle;
+  position: relative
+}
+.r-calendar-item > span{
+  width:30px;
+  height:30px;
+  line-height: 30px;
+  display: block;
+
+}
+
+/* Out of days */
+.r-calendar-item.r-outOfDays {
+  color: #aaa;
+  pointer-events: none;
+  display: none;
+}
+
+/* Disbaled */
+.r-calendar-item.r-disabled {
+  background: #f1f1f1;
+
+  /* pointer-events: none; */
+}
+.r-calendar-item.r-disabled-range {
+  background: #f1f1f1;
+
+  pointer-events: none; 
+}
+.r-calendar-item.r-forbidden {
+  background: #f1f1f1;
+  pointer-events: none;
+}
+.r-calendar-item.r-disabled:hover span {
+  color: #000
+}
+/* Selected */
+.r-calendar-item.r-selected span {
+  background: var(--focus-color);
+  border-radius: 50%;
+  color: #fff;
+}
+.r-calendar-item:hover span {
+  border: 1px solid var(--focus-color);
+}
+
+/* Today && Current Month */
+.r-calendar-item.r-today span,
+.r-calendar-item.r-currentMonth span{
+  border:1px solid var(--focus-color);
+  border-radius: 50%;
+} 
+
+/* Week */
+.r-calendar-item.r-week {
+  pointer-events: none;
+  font-weight: bold
+}
+
+/* Month */
+.r-calendar-item.r-month {
+  width:33.33%;
+  margin-bottom:12px;
+
+  border:4px solid transparent
+}
+.r-calendar-item.r-month span {
+  border-radius:5px;
+  width:unset;
+}
+
+
+/* Footer */
+.r-calendar-footer {
+  margin-top: 16px
+}
+
+
+/* RTL */
+.r-calendar.r-rtl {
+  direction: rtl
+}
+  

@@ -1,0 +1,464 @@
+@import "./variables.scss";
+
+body {
+  direction: rtl;
+  padding: 0;
+  margin: 0;
+  font-family: "Iransnas_Light";
+  background: #f9fafb;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
+#map-area {
+  position: fixed;
+  top: 65px;
+  right: 110px;
+  width: 100%;
+  height: 100%;
+}
+/*************** 
+* Map Header 
+****************/
+.map-header {
+  background: #024462;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+}
+.map-btn {
+  position: relative;
+}
+.map-btn:hover ul {
+  display: block;
+  overflow-y: auto;
+  height: 350px;
+  min-width: 200px;
+}
+.map-btn ul {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  background: #14203c;
+  display: none;
+  min-width: 180px;
+}
+.map-btn ul li {
+  padding: 4px 12px;
+}
+.map-btn ul li:hover {
+  background: #024462;
+}
+.map-header-tools {
+  display: flex;
+  color: #fff;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  position: relative;
+}
+.map-header-tools li {
+  cursor: pointer;
+  padding: 0 5px;
+  font-size: 20px;
+}
+.map-seperator {
+  width: 1px;
+  background: #fff;
+  height: 40px;
+  margin: 0 12px;
+}
+.map-header-buttons {
+  display: flex;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+}
+.map-btn {
+  padding: 0 16px;
+  cursor: pointer;
+}
+.map-btn i {
+  font-size: 24px;
+  vertical-align: middle;
+}
+.map-header-right {
+  display: flex;
+}
+.map-header-left {
+}
+.map-header-left a {
+  color: #fff !important;
+}
+.map-header-left a i {
+  font-size: 22px;
+  vertical-align: middle;
+}
+
+/*************** 
+* Map Sidebar 
+****************/
+
+.map-sidebar {
+  background: #14203c;
+  width: 112px;
+  position: fixed;
+  top: 62px;
+  height: 100%;
+  overflow-y: auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.map-sidebar .tab-list {
+  color: #fff;
+  display: flex;
+  transform: rotate(-90deg);
+  position: relative;
+  left: -38px;
+  top: 50px;
+  padding: 0;
+  margin: 0;
+}
+.map-sidebar .tab-list li {
+  background: #024462;
+  margin: 0 3px;
+  padding: 1px 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.map-sidebar .tab-list li:hover {
+  background: #3aa2d1;
+}
+.map-sidebar .item-list {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  margin-right: 5px;
+}
+.map-sidebar .item-list li {
+  font-size: 12px;
+  color: #fff;
+  width: 55px;
+  margin-bottom: 22px;
+  cursor: pointer;
+  padding: 5px;
+}
+.map-sidebar .item-list li:hover {
+  background: #3aa2d1;
+  border-radius: 5px;
+}
+/*************** 
+* Map Footer 
+****************/
+.map-footer {
+  background: #14203c;
+  width: 112px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 112px);
+  overflow-y: hidden;
+  overflow-x: auto;
+  height: 102px;
+  direction: ltr;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.map-footer .tab-list {
+  color: #fff;
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0;
+  margin: 0;
+}
+.map-footer .tab-list li {
+  background: #024462;
+  margin: 0 3px;
+  padding: 1px 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.map-footer .tab-list li:hover {
+  background: #3aa2d1;
+}
+.map-footer .item-list {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  margin-top: 15px;
+  display: flex;
+}
+.map-footer .item-list li {
+  font-size: 12px;
+  color: #fff;
+  width: 55px;
+  margin-right: 22px;
+  cursor: pointer;
+  padding: 5px;
+}
+.map-footer .item-list li:hover {
+  background: #3aa2d1;
+  border-radius: 5px;
+}
+
+/*********************
+* Modal
+**********************/
+.r-modal {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999999;
+}
+body.r-modal-open {
+  overflow: hidden;
+}
+.r-modal-wrapper {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 700px;
+  margin: 5% auto 0 auto;
+}
+.tehran-map {
+  background-image: url("../../components/404/mine.PNG");
+  background-repeat: no-repeat;
+  margin-left: 115px;
+  padding: auto;
+  margin-top: 20px;
+  height: 500px;
+}
+.r-modal-header {
+  display: flex;
+  background: #0475a9;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  color: #fff;
+}
+.r-modal-header h2 {
+  font-size: 16px;
+}
+.r-modal-content {
+  height: 400px;
+  overflow-y: auto;
+  /* display: flex;
+    flex-wrap:wrap; */
+  padding: 0 12px;
+}
+.r-modal-content .model-item {
+  width: calc(50% - 32px);
+  padding: 0 16px;
+}
+.r-modal-header span {
+  font-size: 20px;
+  cursor: pointer;
+}
+.r-modal-footer {
+  display: flex;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 0 18px;
+}
+#map-preview-layers {
+  height: 250px;
+  overflow-y: auto;
+  width: 40%;
+}
+#map-wrapper {
+  display: flex;
+}
+/*********************
+* Dropz Zone
+**********************/
+
+.filepicker {
+  /* border: 1px solid #ddd;
+     width: 100%;
+    margin: 15px;
+    padding: 25px;
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 5px; */
+}
+
+.vendor-menu {
+  // top: 194px;
+  margin-right: 112px;
+  height: calc(100% - 112px);
+  overflow: auto;
+  border: 1px solid #4ec6de;
+
+  &--fixed {
+    z-index: 1;
+    position: fixed;
+    top: 50px !important;
+
+    // fixed bordered
+    border-bottom: 1px solid gray;
+
+    &-default {
+      height: 64px;
+    }
+    &-tabbed {
+      height: 48px;
+    }
+  }
+
+  &--add {
+    padding-left: 40px;
+  }
+
+  // DEFAULT TYPE STYLE
+  &-default {
+    height: 64px;
+
+    &__item {
+      display: inline-block;
+      height: 100%;
+      // margin-left: 0.5rem;
+
+      &:first-child {
+        margin-right: 0.75rem;
+      }
+      &:last-child {
+        margin-left: 0.75rem;
+      }
+
+      &--active p {
+        font-weight: bold;
+        border: 1px solid #4ec6de;
+        background-color: #4ec6de;
+        color: white;
+      }
+
+      &-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &-add {
+        width: 100%;
+        height: 100%;
+
+        img {
+          width: 20px;
+          height: 20px;
+          margin: -6px 0 -6px 6px;
+        }
+        span {
+          font-size: 0.77rem;
+          font-weight: 500;
+          color: green;
+        }
+      }
+
+      &-text {
+        margin: 0px;
+        cursor: pointer;
+        font-size: 0.7rem;
+        text-align: center;
+        padding: 0.5rem 0.9rem;
+        border-radius: 50px;
+        color: lightslategray;
+        transition: 300ms ease all;
+      }
+    }
+
+    &--bordered {
+      border-bottom: 1px solid lightgray;
+    }
+  }
+
+  // TAB TYPE STYLE
+  &-tabbed {
+    direction: ltr;
+    // position: relative;
+
+    &__item {
+      height: 100%;
+      bottom: 0;
+      z-index: 1;
+      position: relative;
+      display: inline-block;
+      box-sizing: border-box;
+
+      &-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        @include makeCenter(center, center, column);
+      }
+
+      &-text {
+        margin: 0px;
+        font-weight: bold;
+        font-size: 0.75rem;
+        text-align: center;
+        cursor: pointer;
+        padding: 0.5rem 0.9rem;
+        color: lightslategray;
+        @include easeTransition(0.3s);
+      }
+
+      &-bbar {
+        width: 100%;
+        bottom: 0px;
+        position: absolute;
+        @include easeTransition(0.3s);
+
+        &--enabled {
+          height: 3px;
+          background-color: green;
+        }
+
+        &--disabled {
+          height: 1px;
+          background-color: lightgrey;
+        }
+      }
+
+      &--active {
+        p {
+          background-color: #4ec6de;
+          color: white;
+        }
+      }
+    }
+
+    &__bbar {
+      right: 0;
+      width: 100%;
+      bottom: 0px;
+      height: 1px;
+      z-index: -1;
+      position: absolute;
+      background: lightgrey;
+    }
+  }
+}
+
+.allocation-screen {
+  &__container {
+    display: flex;
+
+    button {
+      border: 1px solid red;
+      width: 50px;
+      padding: 4px;
+      margin: 2px;
+    }
+  }
+}
